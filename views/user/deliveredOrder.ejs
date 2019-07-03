@@ -21,7 +21,14 @@
   <%var totalPrice=0%>
     <% for(id in data.cart){%>
    <figure class="itemside mb-2 ">
-       <div class="aside"><div class="img-wrap img-sm img-fluid img-thumbnail border-right"><img src="<%=data.cart[id].item.image[0].url%>"></div></div>
+    <div class="gallery-wrap">
+                 <div class="img-small-wrap">
+                   <div class="item-gallery" height="80px;"> 
+                   <img src="<%=data.cart[id].item.image[0].url%>">
+                 </div>
+               </div>
+             </div>
+       
        <figcaption class="p-2 ">
            
            <a href="/products/<%=data.cart[id].item._id%>"><%=data.cart[id].item.name%></a>

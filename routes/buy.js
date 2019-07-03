@@ -143,7 +143,7 @@ router.delete("/console/:id",middleware.isLoggedIn,middleware.isAuthor,(req,res)
               req.flash("error",err.message)
               return res.redirect("back");
           }
-          console.log(order)
+        
 
           var removeOrder = {id:req.params.id};
           user.orderId = user.orderId.filter(function(item){
