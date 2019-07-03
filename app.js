@@ -77,6 +77,7 @@ app.use(function(req,res,next){
    /*if(req.user){
         res.locals.qty=req.user.cart.totalQty||0;
     }*/
+    res.locals.qty=0
    next();
 });
 
