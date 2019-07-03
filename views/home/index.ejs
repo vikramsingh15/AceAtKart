@@ -164,12 +164,12 @@
       
 
       <li class="col-6 col-md-3">
-      <a href="/products/<%=deals[i]._id%>" class="itembox"> 
+      <a href="/products/<%=sales[i]._id%>" class="itembox"> 
         <div class="card-body">
           <p class="word-limit"><%=sales[i].name%> </p>
           <p class="word-limit"> &#x20b9; <%=sales[i].price%>
             <strike class="text-secondary"> &#x20b9; <%=sales[i].mrp%></strike>      </p>
-          <img class="img-sm img-fluid" src="<%=deals[i].image[0].url%>">
+          <img class="img-sm img-fluid" src="<%=sales[i].image[0].url%>">
         </div>
       </a>
         </li>
@@ -180,7 +180,7 @@
       <%for(i;i>number-8;i--){%>    
 
       <li class="col-6 col-md-3">
-      <a href=/products/<%=deals[i]._id%> class="itembox"> 
+      <a href=/products/<%=sales[i]._id%> class="itembox"> 
         <div class="card-body">
           <p class="word-limit"><%=sales[i].name%> </p>
           <p class="word-limit"> &#x20b9; <%=sales[i].price%>

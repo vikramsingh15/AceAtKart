@@ -17,12 +17,18 @@ router.get("/cart",middleware.isLoggedIn,(req,res)=>{
 
 router.get("/add-to-cart/:p_id",middleware.isLoggedIn,(req,res)=>{
 
+  let p_id=req.params.p_id;
 	let cart=new Cart(req.user.cart ? req.user.cart:{})
 	Product.findById(req.params.p_id,(err,product)=>{
 		if(err){
 			req.flash("error",err.message);
 			return res.redirect("back");
-		}
+		}else if(req.user.cart.items[p_id]){
+    if(req.user.cart.items[p_id].qty>=req.user.cart.items[p_id].item.stock){
+      req.flash("error",product.name+" could not be added to the cart exceeded maximum stock avalable !!!!!!!!");
+      return res.redirect("back");
+    }
+  }
 
 		cart.add(product,product.id);
 		req.user.cart=cart;

@@ -76,6 +76,8 @@ app.use(function(req,res,next){
    res.locals.image=null;
    if(req.user&&req.user.cart){
         res.locals.qty=req.user.cart.totalQty||0;
+    }else{
+        res.locals.qty=0;
     }
 
    next();
