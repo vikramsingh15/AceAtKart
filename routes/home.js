@@ -23,11 +23,7 @@ News.find({}, function(err, news) {
                                if(err){
                                        req.flash("error","Something went wrong");                 
                                 }else{
-                                res.render("home/index.ejs",{blogA:news[news.length-1],
-                                blogB:news[news.length-2],
-                                blogC:news[news.length-3],
-                                deals:deals,
-                                sales:sales }); 
+                                res.render("home/index.ejs",{deals,sales }); 
                                 }
                            });                 
                     }
