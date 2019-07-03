@@ -6,11 +6,6 @@ const express = require("express"),
 
 
 router.get("/",(req,res)=>{
-News.find({}, function(err, news) {
-    if(err){
-        req.flash("error","Something went wrong");
-
-    }else{
             
             var regexDeal=new RegExp(escapeRegex("deal"),'gi');
             var regexSale=new RegExp(escapeRegex("sale"),'gi');
@@ -28,10 +23,7 @@ News.find({}, function(err, news) {
                            });                 
                     }
             });
-            
-   		 }
-  
-	});
+          
     
 });
 
