@@ -30,13 +30,13 @@ router.get("/register",(req,res)=>{
 router.post("/activateAccount",(req,res,next)=>{
     
      var newUser = {
-    name:req.body.name.trim(),
-    username:req.body.username.trim(),
-    email:req.body.email.trim(),
-    phone:req.body.phone.trim(),
-    address:req.body.address.trim(),
-    city:req.body.city.trim(),
-    country:req.body.country.trim()
+    name:req.body.name,
+    username:req.body.username,
+    email:req.body.email,
+    phone:req.body.phone,
+    address:req.body.address,
+    city:req.body.city,
+    country:req.body.country
     };
     
     Unactivated.create(newUser,(err,user)=>{
@@ -116,13 +116,13 @@ router.get("/activateAccount/:token/:id",(req,res)=>{
 
 router.post("/register",(req,res)=>{
     var newUser = new User({
-    name:req.body.name.trim(),
-    username:req.body.username.trim(),
-    email:req.body.email.trim(),
-    phone:req.body.phone.trim(),
-    address:req.body.address.trim(),
-    city:req.body.city.trim(),
-    country:req.body.country.trim()
+    name:req.body.name,
+    username:req.body.username,
+    email:req.body.email,
+    phone:req.body.phone,
+    address:req.body.address,
+    city:req.body.city,
+    country:req.body.country
     });
      
     if(req.body.password===req.body.confirm){
