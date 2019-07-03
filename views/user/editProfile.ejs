@@ -1,0 +1,58 @@
+
+<% include ../partials/header.ejs%>
+
+<div class="container">
+  
+
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <h3 class="card-title mt-3 text-center">Edit Profile</h3>
+    
+    <form action="/editProfile?_method=PUT" method="POST">
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+       </div>
+          <input name="name" class="form-control" placeholder="Full name" type="text" value="<%=currentUser.name%>" required>
+      </div> <!-- form-group// -->
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+      </div>
+      
+        <input name="phone" class="form-control" placeholder="Phone number" type="text" value="<%=currentUser.phone%>" required>
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+      </div>
+      <input name="address" class="form-control" placeholder="Delivery address" type="text" value="<%=currentUser.address%>" required>
+     
+    </div> <!-- form-group end.// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+      </div>
+         <input name="city" class="form-control" placeholder="City" type="text" value="<%=currentUser.city%>" required>
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
+      </div>
+          <input name="country" class="form-control" placeholder="country" type="text" value="<%=currentUser.country%>" required>
+      </div> <!-- form-group// -->                                      
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Save Changes  </button>
+      </div> <!-- form-group// -->      
+                                                                       
+  </form>
+  </article>
+
+
+</div>  
+
+
+
+
+<% include ../partials/footer.ejs%>
+

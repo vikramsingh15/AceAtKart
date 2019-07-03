@@ -1,0 +1,65 @@
+<% include ../partials/header.ejs%>
+
+<div class="container" >
+    <div class="row justify-content-center">
+        
+        <div class="col-md-12 col-lg-5 col-lg-offset-4">
+           
+
+                <div class="panel panel-success">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h3><%=currentUser.name%></h3></div>
+  
+
+  <!-- Table -->
+  <table class="table table-striped">
+    
+    <tbody>
+      <tr>
+        <td>Username</td>
+        <td><%=currentUser.username%></td>
+        
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%=currentUser.email%></td>
+
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td><%=currentUser.phone%></td>
+
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td><%=currentUser.address%></td>
+
+      </tr>
+      <tr>
+        <td>City</td>
+        <td><%=currentUser.city%></td>
+
+      </tr>
+    <tr>
+        <td>Country</td>
+        <td><%=currentUser.country%></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+                
+                
+                
+                
+                
+            
+        </div>
+    </div>
+    
+</div>
+
+
+
+<% include ../partials/footer.ejs%>
+

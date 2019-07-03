@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="description" content="<%=data.meta%>">
+        <title><%=data.title%> - Doodad</title>
+        
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="<%=data.title%>" />
+<meta property="og:description"        content="<%=data.meta%>" />
+<meta property="og:image"              content="<%=data.imageUrl%>" />
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        
+         <link rel="stylesheet" href="/stylesheet/nav.css">
+      
+        <link rel="stylesheet" href="/stylesheet/main.css">
+        <link rel="canonical" href="https://www.doodad.in/news/<%=data.id%>">
+        
+       
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+       
+    </head>
+    <body>
+        <nav class="navbar navbar-default" >
+  <div class="container-fluid" >
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" href="/"><img src="https://res.cloudinary.com/dxkrfrwzc/image/upload/v1553354613/l9mri6xzs96b5k1otgiz.png" alt="Dispute Bills"></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="/news" class="bold">Blogs <span class="sr-only">(current)</span></a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our products<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/items?search=mobile+cover">Mobile Covers</a></li>
+            
+            <li><a href="/items?search=cable">Cables</a></li>
+            
+            <li><a href="/items?search=mee">Mee World</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+      
+      <form action="/products" method="GET" class="navbar-form navbar-left"  >
+                        <div class="form-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search Products">
+                        </div>
+                        <input type="submit" value="Search" class="btn btn-default">
+                    </form>
+      <ul class="nav navbar-nav navbar-right">
+        <%if(currentUser){%>
+          <li><a href="/logout" class="bold">Sign-out <i class="fas fa-sign-out-alt"></i></a></li>
+        <%}else{%>
+          <li><a href="/login">Sign-In <i class="fas fa-sign-in-alt"></i></a></li>
+        <%}%>
+        <%if(currentUser){%>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=currentUser.username%> 
+                <%if(currentUser&&currentUser.isAdmin){%>
+                            (admin)
+                  <%}%>
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/myorder">My Orders</a></li>
+                  <li><a href="/editProfile">Edit Profile</a></li>
+                  <li><a href="/profile/">My Profile</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="/deliveredOrder">Delivered Orders</a></li>
+                </ul>
+              </li>
+            <%}else{%>  
+            <li><a href="/register">Sign-Up <i class="fas fa-user-plus"></i></a></li>
+        <%}%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+        
+        <%if(error && error.length > 0){%>
+            <div class="alert alert-danger" role="alert">
+                <%=error%>
+            </div>
+        <%}%>
+        
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="addthis_sharing_toolbox" data-url="THE URL" data-title="THE TITLE" data-description="THE DESCRIPTION" data-media="<%data.imageUrl%>"></div>
+
+<link rel="stylesheet" href="/stylesheet/blog.css">
+
+ <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title"><%= data.title %></h1>
+        <p class="lead blog-description"><%=data.subtitle%></p>
+      </div>
+
+    <img  src="<%= data.imageUrl %>" style="padding:10px;width:350px;" class="img-responsive" alt="">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            
+            <p class="blog-post-meta" ><%= data.created.toDateString() %> by <a href="#"><%=data.author%></a></p>
+            
+            <%- data.body %>
+          
+          </div><!-- /.blog-post -->
+
+
+        
+
+        </div><!-- /.blog-main -->
+        
+        
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>Doodad is an Indian e-commerce website, vending gadget supplies. It strives to provide gadget supplies like headphones, customised USB cables and many more. Supplies are affordable and of good quality. Also, Imparting you hassle free delivery to your doorstep.</p>
+          </div>
+        
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              
+              <li><a href="https://twitter.com/Doodad57230030">Twitter</a></li>
+              <li><a href="https://www.facebook.com/Doodad-857231217952705/?modal=admin_todo_tour">Facebook</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+      
+                 
+ <!--COMMENT SECTION START-->
+    <div class="well">
+      <!--Setting up the add new comment button that is used for collapsing-->
+      <div class="text-right">
+        <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add comment</a>
+      </div>
+
+      <!--Comment section title-->
+      <h3><strong>Comments <span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span></strong></h3>
+
+      <!--Collapse Add a comment form START-->
+      <div class="collapse" id="collapseComment">
+        <div class="well" style="border-left: 5px solid #00C851;">
+            <% if(!currentUser) { %>
+          <!--If the user is not logged in, direct him to the login page-->
+          <h5>You need to login before you can comment. <a href="/login">Click here</a> to go to the login page.</h5>
+            <% } %>
+            <% if(currentUser) { %>
+          <!--If the user is logged in, show the new comment form-->
+          <h4>Write your comment <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></h4>
+          <form id="add-comment-form" action="/news/<%= data._id %>/comment" method="POST">
+            <div class="form-group">
+              <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70"></textarea>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success btn-sm">Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+            </div>
+          </form>
+            <% } %>
+        </div>
+      </div>
+      <!--Collapse Add a comment form END-->
+
+      <hr>
+
+      <!--Check if there are comments, if there are none say no comments.-->
+        <% if (data.comment.length === 0) { %>
+      <em style="color: grey;">No comments yet.</em>
+        <% } %>
+
+      <!--Display comments by looping through them-->
+        <% data.comment.forEach(function(comment) { %>
+      <div class="row">
+        <div class="col-md-12">
+          <strong>
+              <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
+            <!--If the current user owns the comment, change the color of the user icon-->
+            <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              <% } else { %>
+            <!--Else just display it black-->
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              <% } %>
+            <!--Print out the author username-->
+              <%= comment.author.username %>
+          </strong>
+          <!--Show when the comment was made-->
+          <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+          <!--Printing the comment-->
+          <p><%= comment.text %></p>
+          <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
+            <% if ((currentUser && currentUser._id.equals(comment.author.id))||(currentUser &&currentUser.isAdmin)) { %>
+          <!--Edit button used for collapsing the edit comment form-->
+          <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
+            Edit</a>
+          <!--Delete comment button-->
+          <form id="delete-form" action="/news/<%= data._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-xs btn-danger">Delete</button>
+          </form>
+          <!--Edit comment form-->
+          <div class="collapse" id="collapseEdit<%= comment._id %>">
+            <div class="well" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+              <h4>Edit your comment <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></h4>
+              <form id="edit-comment-form" action="/news/<%= data._id %>/comment/<%= comment._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                  <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="comment[text]" placeholder="Your comment text..." form="edit-comment-form" rows="5" cols="70"><%= comment.text %></textarea>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-warning btn-sm">Edit comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+                </div>
+              </form>
+            </div>
+          </div>
+            <% } %>
+          <hr>
+        </div>
+      </div>
+        <% }) %>
+    </div>
+<!--COMMENT SECTION END-->
+
+      
+      
+      
+      
+
+    </div><!-- /.container -->
+
+
+
+
+<%if(currentUser && currentUser.isAdmin){%>
+                <a class="btn btn-success" href="/news/<%=data.id%>/edit">EDIT NEWS</a>
+                <form action="/news/<%=data.id%>?_method=DELETE" method="POST" id="danger" style="display:inline;">
+                    <button class="btn btn-danger">DELETE NEWS!!!</button>
+                </form>
+    <%}%>
+
+
+
+
+<script type="text/javascript">
+var addthis_share = {
+  
+   title: "<%=data.title%>",
+   description: "<%=data.meta%>",
+   media: "<%=data.imageUrl%>"
+}
+</script>
+
+
+<% include ../partials/footer.ejs%>

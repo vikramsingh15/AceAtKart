@@ -1,0 +1,110 @@
+<%include ../partials/header.ejs%>
+
+<div class="container-fluid mt-5">
+  <article class="card card-product">
+    <div class="card-body">
+    <div class="row align-items-center">
+      <aside class="col-sm-3">
+        <div class="img-wrap img-fluid"><img src="<%=product.image[0].url%>"></div>
+      </aside> <!-- col.// -->
+      <article class="col-sm-4 border-left">
+          <h4 class="title text-info"> <%=product.name%></h4>
+          <dl class="dlist-align">
+            <dt>Your Price</dt>
+            <dd>&#x20b9; <%=product.price%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>M.R.P</dt>
+            <dd>&#x20b9; <%=product.mrp%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>You Save</dt>
+            <dd>&#x20b9; <%=product.customerSaving%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>Delivery</dt>
+            <dd class="text-primary">With In 2 days approx</dd>
+          </dl>  <!-- item-property-hor .// --><dl class="dlist-align">
+          <dt>Payment</dt>
+            <dd class="text-primary">Cash on delivery</dd>
+          </dl>  <!-- item-property-hor .// -->
+         <dl class="dlist-align">
+          <dt>Shipping</dt>
+            <dd class="text-primary">
+              <%if(isNaN(product.deliveryPrice)){%>
+                <%=product.deliveryPrice%>
+              <%}else{%>
+                  &#x20b9; <%=product.deliveryPrice%>
+              <%}%>
+                
+            </dd>
+          </dl>  <!-- item-property-hor .// -->
+
+          <form action="/buy/<%=product.id%>" method="GET" >
+                  <div class="form-group">
+                    <input type="text" name="qty" placeholder="Quantity"  value=<%=qty%>>
+                    <input type="submit" value="Set Qty." >
+                  </div>
+                                 
+          </form>
+      </article> <!-- col.// -->
+      <aside>
+        
+      </aside>
+      
+
+<hr>
+      <aside class="col-sm-5 border-left align-self-start">
+        <div class="action-wrap">
+
+          <h4 class="title text-success">Shipping Address</h4>
+          <dl class="dlist-align">
+            <dt>Name</dt>
+            <dd> <%=currentUser.name%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>Address</dt>
+            <dd> <%=currentUser.address%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>Mobile no.</dt>
+            <dd> <%=currentUser.phone%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>City</dt>
+            <dd> <%=currentUser.city%></dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="dlist-align">
+            <dt>Country</dt>
+            <dd><%=currentUser.country%></dd>
+          </dl>  <!-- item-property-hor .// -->
+
+          <span><a href="/editProfile" class="btn btn-outline-dark">Change Address</a></span>
+        </div> <!-- action-wrap.// -->
+      </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+    </div> <!-- card-body .// -->
+  </article> <!-- product-list.// -->
+
+<div class="row" class="m-auto m-5">
+         <div class="col-sm-12 col-lg-4">
+                 <div class="card" style="padding:10px;">
+                     <%if(qty>product.stock){%>
+                        <p style="color:red;">Dear customer you have set the quntity of product more than available stock of product :(</p>
+                   <%}else{%>
+                     
+                     <a href="/orderPlaced/<%=product.id%>/<%=qty%>" class="btn btn-warning btn-lg btn-block" style="margin:auto;">Place My Order Now</a>
+                     <h3>Order Summary</h3>
+                     <h5>Items: <span style="color:grey;float:right;">&#x20b9; <%=product.price%></span> </h5>
+                     <h5>Delivery Price :  <span style="color:grey;float:right;"><%=product.deliveryPrice%></span></h5>
+                     <hr class="featurette-divider">
+                     <h4 style="color:red;">Order Total:<span style="float:right;">&#x20b9;<%=(product.price)*qty%></span></h4>
+                     
+                     <%}%>
+                 </div>
+       </div>
+    </div>  
+</div>    
+
+
+<%include ../partials/footer.ejs%>

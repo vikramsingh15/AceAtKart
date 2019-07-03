@@ -1,0 +1,97 @@
+<% include ../partials/header.ejs%>
+
+<div class="container-fluid ">
+  <h2 style="text-align:center;color:#b8206e;">Add New Product Here</h2>
+          <form class="form-horizontal mt-5" action="/products" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                  <label class="control-label" for="name">Product name:</label>
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" id="name" placeholder="Enter full product name" name="products[name]" autofocus required>
+                  </div>
+                </div>
+              
+              <div class="form-group">
+                  <label class="control-label" for="price">Price:</label>
+                  <div class=" col-md-12 ">
+                    <input type="number" class="form-control" id="price" placeholder="Enter price" name="products[price]" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="mrp">M.R.P:</label>
+                  <div class=" col-md-12 ">
+                    <input type="number" class="form-control" id="mrp" placeholder="Enter max retail price" name="products[mrp]" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="image">Image1:</label>
+                  <div class=" col-md-12 ">
+                    <input type="file"  id="image" placeholder="Upload image1" name="image" accept="image/*" required multiple/ >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="image">Image2:</label>
+                  <div class=" col-md-12 ">
+                    <input type="file"  id="image" placeholder="Upload image2" name="image" accept="image/*" required multiple/ >
+                  </div>
+                </div>
+                
+                
+                <div class="form-group">
+                  <label class="control-label" for="delivery">Delivery options:</label>
+                  <div class=" col-md-12 ">
+                    <input type="text" class="form-control" id="delivery" placeholder="(eg:free delivery or rs 40)" name="products[deliveryPrice]" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="stock">Stock available:</label>
+                  <div class=" col-md-12 ">
+                    <input type="number" class="form-control" id="stock" placeholder="(eg:2)" name="products[stock]" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="description">Search query:</label>
+                  <div class=" col-md-12 ">
+                  <textarea type="text" class="form-control" id="description" placeholder="Enter keywords" name="products[searchQuery]" required></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="otherProduct">Other products:</label>
+                  <div class=" col-md-12 ">
+                  <textarea type="text" class="form-control" id="otherProduct" placeholder="Enter otherProduct" name="products[otherProduct]" required></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="description">Description of product:</label>
+                  <div class=" col-md-12 ">
+                  <textarea type="text" class="form-control" id="description" placeholder="Enter description" name="products[description]" required></textarea>
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label class="control-label" for="tech. details">Technical details of product:</label>
+                  <div class=" col-md-12 ">
+                  <textarea type="text" class="form-control" id="tech." placeholder="Enter Technical details" name="products[technicalDetails]" required></textarea>
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label class="control-label" for="tech. details">Additional Info:</label>
+                  <div class=" col-md-12 ">
+                  <textarea type="text" class="form-control" id="tech." placeholder="Enter Additional info.(eg:warranty)" name="products[additionalInfo]" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group">        
+                  <div style="text-align:center;">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                  </div>
+                </div>
+          </form>
+</div>
+
+
+
+
+
+<% include ../partials/footer.ejs%>

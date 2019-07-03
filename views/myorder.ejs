@@ -1,0 +1,105 @@
+<% include ./partials/header.ejs%>
+
+
+<div class="container mt-3">
+
+  <%if(data.length<=0){%>
+    <div class="card-banner" style="height:250px; background-image: url('https://images.unsplash.com/photo-1501003878151-d3cb87799705?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+      <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
+        <div class="text-center">
+          <h5 class="card-title">You have not ordered anything yet </h5>
+          <a href="/" class="btn btn-warning btn-sm">Click me to start shopping  </a>
+        </div>
+      </article>
+    </div> <!-- card.// -->
+  <% }else{%>
+<%  data.forEach(data=>{%>
+<div class="card box p-2 mt-3">
+
+<div class="row">
+<div class="col-md-4">
+  <%var totalPrice=0%>
+    <% for(id in data.cart){%>
+   <figure class="itemside mb-2 ">
+       <div class="aside"><div class="img-wrap img-sm img-fluid img-thumbnail border-right"><img src="<%=data.cart[id].item.image[0].url%>"></div></div>
+       <figcaption class="p-2 ">
+           
+           <a href="/products/<%=data.cart[id].item._id%>"><%=data.cart[id].item.name%></a>
+           <p>Price :  &#x20b9; <%=data.cart[id].price%></p>
+           <p>qty : <%=data.cart[id].qty%></p>
+       </figcaption>
+   </figure>
+   <%totalPrice+=data.cart[id].price%>
+   <%}%>
+    
+
+</div>
+     
+   <div class="col-md-4 d-flex justify-content-center">
+    <article>
+        <h5><%=data.created.toDateString()%></h5>
+      
+        <dl class="dlist-align">
+          <dt>Name</dt>
+          <dd><%=data.name%></dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="dlist-align">
+          <dt>Address</dt>
+          <dd><%=data.address%></dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="dlist-align">
+          <dt>City</dt>
+          <dd><%=data.city%></dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="dlist-align">
+          <dt>Delivery</dt>
+          <dd class="text-primary">With In 2 days approx</dd>
+        </dl>  <!-- item-property-hor .// --><dl class="dlist-align">
+        <dt>Payment</dt>
+          <dd class="text-primary">Cash on delivery</dd>
+        </dl>  <!-- item-property-hor .// --> 
+    </article> <!-- col.// -->
+   </div>
+   
+   <aside class="col-sm-3 mt-3 ml-3">
+        <div class="action-wrap">
+          <div class="price-wrap h4">
+            <span class="price">  Total Price : &#x20b9; <%=totalPrice%> </span>  
+            
+          </div> <!-- info-price-detail // -->
+          
+          <br>
+          <p>
+            <%if((new Date()-data.created)<86400000){%>
+            
+                    
+                        <form action="/cancelOrder/<%=data.id%>?_method=DELETE" method="POST" >
+                             <button class="btn btn-danger" >Cancel Order </button>
+                        </form>
+                    
+            <%}else{%>
+            
+                <h5>Thanks for shopping with us we will call you when our delivery person will be out for delivery!!</h5>
+            <%}%>
+            
+             </p>
+          <a href="#"><i class="fa fa-hand-point-right"></i>  You can cancel order within 24 hours</a>
+        </div> <!-- action-wrap.// -->
+      </aside> <!-- col.// -->
+</div>
+    
+
+
+</div> <!-- card.// -->
+<% })%>
+
+
+<%}%>
+    
+</div>
+
+
+
+
+
+<% include ./partials/footer.ejs%>

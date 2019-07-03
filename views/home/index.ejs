@@ -1,0 +1,220 @@
+<%include ../partials/header.ejs%>
+
+<!--carousel -->
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        
+
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><img src="https://images.unsplash.com/photo-1544441892-4284006e19ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60" width="100%" height="100%" class="img-fluid"></svg>
+        <div class="container">
+          <div class="carousel-caption text-left lead ">
+            
+            <p>Join an expedition into the tech world and amazing gadget supplies with AceAtKart.</p>
+            <p><a class="btn btn-lg btn-primary" href="/register" role="button">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><img src="https://images.unsplash.com/photo-1495175448924-1d9a30c90a42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60" width="100%" height="100%" class="img-fluid"></svg>
+        <div class="container">
+          <div class="carousel-caption lead">
+            <h1>Another example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><img src="https://images.unsplash.com/photo-1481207801830-97f0f9a1337e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60" width="100%" height="100%" class="img-fluid"></svg>
+        <div class="container">
+          <div class="carousel-caption text-right lead">
+            <h1>One more for good measure.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+                                     <!-- carousal -->
+
+
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+
+<% if(deals){%>
+
+<section class="section-content padding-y-sm bg">
+<div class="container">
+
+<header class="section-heading heading-line">
+  <h4 class="title-section bg">Today's Deal</h4>
+</header>
+
+<div class="card">
+<div class="row no-gutters">
+  <div class="col-md-3">
+  
+<article href="#" class="card-banner h-100 bg2">
+  <div class="card-body zoom-wrap">
+    <h4 class="title">Today's best deal</h4>
+    <p>Consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, c</p>
+    <a href="/deal" class="btn btn-warning">Show more</a>
+    
+  </div>
+</article>
+
+  </div> <!-- col.// -->
+
+<div class="col-md-9 text-center">
+  <ul class="row no-gutters border-cols">
+      <%let i=deals.length-1;let number=i;%>
+
+      <%for(i;i>number-4;i--){%>
+      
+
+      <li class="col-6 col-md-3">
+      <a href="/products/<%=deals[i].id%>" class="itembox"> 
+        <div class="card-body">
+          <p class="word-limit"><%=deals[i].name%> </p>
+          <p class="word-limit"> &#x20b9; <%=deals[i].price%>
+            <strike class="text-secondary"> &#x20b9; <%=deals[i].mrp%></strike>      </p>
+          <img class="img-sm" src="<%=deals[i].image[0].url%>">
+        </div>
+      </a>
+        </li>
+        <%}%>
+    
+  </ul>
+  <ul class="row no-gutters border-cols">
+      <%for(i;i>number-8;i--){%>    
+
+      <li class="col-6 col-md-3">
+      <a href=/products/<%=deals[i].id%> class="itembox"> 
+        <div class="card-body">
+          <p class="word-limit"><%=deals[i].name%> </p>
+          <p class="word-limit"> &#x20b9; <%=deals[i].price%>
+            <strike class="text-secondary"> &#x20b9; <%=deals[i].mrp%></strike>   </p>
+          <img class="img-sm" src="<%=deals[i].image[0].url%>">
+        </div>
+      </a>
+        </li>
+        <%}%>
+    
+  </ul>
+  </div> <!-- col.// -->
+</div> <!-- row.// -->
+  
+</div> <!-- card.// -->
+
+</div> <!-- container .//  -->
+</section>
+<%}%>
+
+
+<%if(sales){%>
+<section class="section-content padding-y-sm bg">
+<div class="container">
+
+<header class="section-heading heading-line">
+  <h4 class="title-section bg">Maha sale</h4>
+</header>
+
+<div class="card">
+<div class="row no-gutters">
+  <div class="col-md-3">
+  
+<article href="#" class="card-banner h-100 bg2">
+  <div class="card-body zoom-wrap">
+    <h4 class="title">Big sale</h4>
+    <p>Consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, c</p>
+    <a href="/sale" class="btn btn-warning">Show more</a>
+    
+  </div>
+</article>
+
+  </div> <!-- col.// -->
+
+<div class="col-md-9 text-center">
+  <ul class="row no-gutters border-cols">
+      <%i=sales.length-1;number=i;%>
+
+      <%for(i;i>number-4;i--){%>
+      
+
+      <li class="col-6 col-md-3">
+      <a href="/products/<%=deals[i].id%>" class="itembox"> 
+        <div class="card-body">
+          <p class="word-limit"><%=sales[i].name%> </p>
+          <p class="word-limit"> &#x20b9; <%=sales[i].price%>
+            <strike class="text-secondary"> &#x20b9; <%=sales[i].mrp%></strike>      </p>
+          <img class="img-sm" src="<%=deals[i].image[0].url%>">
+        </div>
+      </a>
+        </li>
+        <%}%>
+    
+  </ul>
+  <ul class="row no-gutters border-cols">
+      <%for(i;i>number-8;i--){%>    
+
+      <li class="col-6 col-md-3">
+      <a href=/products/<%=deals[i].id%> class="itembox"> 
+        <div class="card-body">
+          <p class="word-limit"><%=sales[i].name%> </p>
+          <p class="word-limit"> &#x20b9; <%=sales[i].price%>
+            <strike class="text-secondary"> &#x20b9; <%=sales[i].mrp%></strike>   </p>
+          <img class="img-sm" src="<%=sales[i].image[0].url%>">
+        </div>
+      </a>
+        </li>
+        <%}%>
+    
+  </ul>
+  </div> <!-- col.// -->
+</div> <!-- row.// -->
+  
+</div> <!-- card.// -->
+
+</div> <!-- container .//  -->
+</section>
+
+<%}%>
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <%if(currentUser && currentUser.isAdmin){%>
+    <a href="/products/new" class="btn btn-primary">Add new product</a>
+    <a href="/console" class="btn btn-primary">Console</a>
+<%}%>
+</div>
+
+<% include ../partials/footer.ejs%>

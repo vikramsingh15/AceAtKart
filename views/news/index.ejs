@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+       
+        <title>Doodad Blogs</title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+       
+        <link rel="stylesheet" href="/stylesheet/main.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        
+        
+        <!--modernizr-->
+        
+        
+       
+    </head>
+    <body>
+        <nav class="navbar navbar-default" >
+  <div class="container-fluid" >
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     
+    <a class="navbar-brand" href="/"><img src="https://res.cloudinary.com/dxkrfrwzc/image/upload/v1553354613/l9mri6xzs96b5k1otgiz.png" alt="Dispute Bills"></a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="/news" class="bold">Blogs <span class="sr-only">(current)</span></a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our products <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/items?search=mobile+cover">Mobile Covers</a></li>
+            
+            <li><a href="/items?search=cable">Cables</a></li>
+            
+            <li><a href="/items?search=mee">Mee World</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+      
+      <form action="/news" method="GET" class="navbar-form navbar-left"  >
+                        <div class="form-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search Blogs">
+                        </div>
+                        <input type="submit" value="Search" class="btn btn-default">
+                    </form>
+      <ul class="nav navbar-nav navbar-right">
+        <%if(currentUser){%>
+          <li><a href="/logout" class="bold">Sign-out <i class="fas fa-sign-out-alt"></i></a></li>
+        <%}else{%>
+          <li><a href="/login">Sign-In <i class="fas fa-sign-in-alt"></i></a></li>
+        <%}%>
+        <%if(currentUser){%>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=currentUser.username%> 
+                <%if(currentUser&&currentUser.isAdmin){%>
+                            (admin)
+                  <%}%>
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/myorder">My Orders</a></li>
+                  <li><a href="/editProfile">Edit Profile</a></li>
+                  <li><a href="/profile/">My Profile</a></li>
+                  <li role="separator" class="divider"></li>
+                   <li><a href="/deliveredOrder">Delivered Orders</a></li>
+                </ul>
+              </li>
+            <%}else{%>  
+            <li><a href="/register">Sign-Up <i class="fas fa-user-plus"></i></a></li>
+        <%}%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+        
+        <%if(error && error.length > 0){%>
+            <div class="alert alert-danger" role="alert">
+                <%=error%>
+            </div>
+        <%}%>
+        
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    
+     
+    
+    
+    
+    
+    
+
+
+
+<%if(noMatch){%>
+            <div class="col-md-4 col-md-offset-4">
+                    
+                    <h3 ><%=noMatch%></h3>
+                    <div>
+                    <form action="/news" method="GET">
+                       <div class="form-group" class="form-inline">
+                           <input type="text" name="search" placeholder="News search..." class="form-control">
+                           <input type="submit" value="Search" class="btn btn-default" style="margin-top:3px;">
+                       </div>
+                   </form>
+                    </div>
+            </div>
+            
+            
+            
+            
+            <%}else{%>
+            <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <div  ><h1> Our Blogs</h1></div>
+                <p style="color:#2185d0;">Tough time tracking latest tech news ? Not a problem anymore, 
+                Stay updated for the latest news of the tech world through our blogs. </p>
+                
+            </div>
+        </header>
+           
+  
+<div class="ui main text container">
+   
+    <%if(currentUser&&currentUser.isAdmin){%>
+    
+        <a class="ui inverted secondary button" href="/news/new">Add new blogs</a>
+    <%}%>
+    
+    
+    
+    <div class="ui top attached segment" style="text-align:center;">
+        <div class="ui divided items">
+            
+            <%datas.forEach(function(data){%>
+                    <div class="item">
+                        <div class="image">
+                           <a href="/news/<%=data.id%>"><img src="<%=data.imageUrl%>" class="img-responsive"></a> 
+                        </div>
+                        <div class="content">
+                            <a class="header" href="/news/<%=data._id%>" style="color:dark-cyan;"><%=data.title%></a>
+                            <div class="meta">
+                                <span><%=data.created.toDateString()%></span>
+                            </div>
+                            <div class="description">
+                                <p><%-data.body.substring(0,150)%>...</p>
+                            </div>
+                            <a href="/news/<%=data._id%>" class="ui inverted green button" style="margin-top:10px;">
+                                show more
+                                <i class="right chevron icon"></i>
+                            </a>
+                        </div>
+                    </div>
+            <%});%>
+        </div>
+    </div>
+</div>
+<%}%>
+
+
+
+
+<% include ../partials/footer %>

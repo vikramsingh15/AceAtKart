@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+
+  <title>
+    <%if(title==="AceAtKart"){%>
+      Online Shopping site in india for mobile covers , earphones , headphones
+      and other mobile accessories : <%=title%>
+    <%}else{%>
+      AceAtKart : <%=title%>
+    <%}%>
+    </title>
+  <!-- meta -->
+  <meta name="description" content="<%=description%>"> 
+  <meta property="og:type"               content="article" />
+  <meta property="og:title"              content="<%=title%> " />
+  <meta property="og:description"        content="<%=description%>" />
+  <meta property="og:image"              content="<%=image%>" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+  <!-- jQuery -->
+  <script src="/js/jquery-2.0.0.min.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="/carousel.css">
+
+  <!-- Bootstrap4 files-->
+
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+  <!-- Font awesome 5 -->
+  <link href="/fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">
+
+  <!-- plugin: fancybox  -->
+  <script src="/plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
+  <link href="/plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">
+
+  <!-- plugin: owl carousel  -->
+  <link href="/plugins/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/plugins/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
+  <script src="/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- custom style -->
+  <link href="/css/ui.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+  <!-- custom javascript -->
+  <script src="/js/script.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+  /// some script
+
+  // jquery ready start
+  $(document).ready(function() {
+    // jQuery code
+
+  }); 
+  // jquery end
+  </script>
+
+  </head>
+<body>
+    <header class="section-header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img class="logo" src="#" alt="AceAtKart" title="alibaba e-commerce html css theme"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTop">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Sourcing </a>
+                <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Top  Suppliers</a></li>
+            <li><a class="dropdown-item" href="#">Suppliers by Regions </a></li>
+            <li><a class="dropdown-item" href="#">Online Retailer  </a></li>
+                </ul>
+            </li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Services </a>
+                <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trade Assurance </a></li>
+            <li><a class="dropdown-item" href="#">Arabic</a></li>
+            <li><a class="dropdown-item" href="#">Logistics Service </a></li>
+            <li><a class="dropdown-item" href="#">Membership Services</a></li>
+                </ul>
+            </li>
+        
+          </ul>
+          <%if(currentUser){%>
+          <ul class="navbar-nav mr-2">
+            <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle text-gray-dark" data-toggle="dropdown"> <i class="fa fa-user"></i> Hello <%=currentUser.username%> </a>
+                <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/myorder">My Order</a></li>
+            <li><a class="dropdown-item" href="/editProfile">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/deliveredOrder">Delivered Orders</a></li>
+                </ul>
+            </li>
+        
+          </ul> <!-- navbar-nav.// -->
+          <%}%>
+        </div> <!-- collapse.// -->
+      </div>
+    </nav>
+
+    <section class="header-main shadow-sm">
+      <div class="container">
+    <div class="row-sm align-items-center">
+      <div class="col-lg-4-24 col-sm-3">
+      <div class="category-wrap dropdown py-1">
+        <button type="button" class="btn btn-light  dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-bars"></i> Categories</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+          <a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+          <a class="dropdown-item" href="#">Auto / Transportation</a>
+          <a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+          <a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
+          <a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+        </div>
+      </div> 
+      </div>
+      <div class="col-lg-11-24 col-sm-8 mr-auto">
+
+          <form action="/products" class="py-1" method="GET">
+            <div class="input-group w-100">
+                <input type="text" class="form-control" style="width:50%;" placeholder="Search here" name="search">
+                <div class="input-group-append">
+                  <button class="btn btn-warning" type="submit">
+                    <i class="fa fa-search"></i> Search 
+                  </button>
+                </div>
+              </div>
+          </form> <!-- search-wrap .end// -->
+
+      </div> <!-- col.// -->
+      <%if(!currentUser){%>
+      <div class="col-lg-9-24 col-sm-12">
+        <div class="widgets-wrap float-right row no-gutters py-1">
+
+          <div class="col-auto">
+          
+            <a href="/login" class="widget-header">
+              <div class="icontext">
+                <div class="icon-wrap"><i class="text-warning icon-sm fa fa-sign-in-alt"></i></div>
+                <div class="text-wrap text-dark">
+                  <div>Sign in</div>
+                  <div>My account</div>
+                  
+                </div>
+              </div>
+            </a>
+           
+          
+          </div> <!-- col.// -->
+
+        <div class="col-auto">
+          <a href="/register" class="widget-header">
+            <div class="icontext">
+              <div class="icon-wrap"><i class="text-warning icon-sm  fa fa-user-plus"></i></div>
+              <div class="text-wrap text-dark">
+                
+                <div>Sign-up</div>
+                <div>now</div>
+              </div>
+            </div>
+          </a>
+        </div> <!-- col.// -->
+        
+    <%}else{%>
+
+      <div class="col-auto ">
+        <a href="/logout" class="widget-header">
+          <div class="icontext">
+            <div class="icon-wrap"><i class="text-warning icon-sm  fa fa-sign-out-alt"></i></div>
+            <div class="text-wrap text-dark">
+              
+              <div>Sign-Out</div>
+              <div>now</div>
+            </div>
+          </div>
+        </a>
+      </div> <!-- col.// -->
+    <%}%>
+
+          <div class="col-auto">
+            <a href="/cart" class="widget-header">
+              <div class="icontext">
+                <div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i></div>
+                <div class="text-wrap text-dark">
+                  <span class="small round badge badge-secondary"><%=qty%></span>
+                  <div>MyCart</div> 
+
+                </div>
+              </div>
+            </a>
+          </div> <!-- col.// -->
+          
+        </div> <!-- widgets-wrap.// row.// -->
+      </div> <!-- col.// -->
+    </div> <!-- row.// -->
+      </div> <!-- container.// -->
+    </section> <!-- header-main .// -->
+    </header> <!-- section-header.// -->
+
+    <div class="container">
+            
+            <%if(error && error.length > 0){%>
+                <div class="alert alert-danger" role="alert">
+                    <%=error%>
+                </div>
+            <%}%>
+            
+            <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
+        </div>
+    

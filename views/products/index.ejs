@@ -1,0 +1,74 @@
+<% include ../partials/header.ejs%>
+<%if(noMatch){%>
+<div class="d-flex justify-content-center text-center mt-5">
+  <div class="col-md-3">
+          <div class="card bg-light ">
+          <div class="card-body">
+          <h1 class="card-title lead"><%=noMatch%></h1>
+          <div>
+          
+               <form action="/products" method="GET" class="card-text">
+                  <div class="form-group" class="form-inline">
+                      <input type="text" name="search" placeholder="Product search..." class="form-control">
+                      <input type="submit" value="Search now" class="btn btn-success" style="margin-top:3px;">
+                  </div>
+              </form>
+            </div>
+          </div>
+          </div>
+  </div>
+  
+</div>
+<%}else{%>
+
+
+<div class="container mt-5" >
+  <div class="row text-center">
+
+      <%for(product of products){%>
+
+          <div class="col-md-3">
+            <figure class="card card-product">
+              <div class="img-wrap">
+                <a href="/products/<%=product.id%>">
+                    <img src="<%=product.image[0].url%>">  
+                </a>
+                
+              </div>
+              <figcaption class="info-wrap">
+                <a href="/products/<%=product.id%>" style="text-decoration: none;">
+                  <h4 class="title text-dark"><%=product.name%></h4>
+                </a>
+                  
+                  <p class="desc  text-info">Delivery Price : 
+                  <%if(isNaN(product.deliveryPrice)){%>
+                    <%=product.deliveryPrice%>
+                  <%}else{%>
+                      &#x20b9; <%=product.deliveryPrice%>
+                  <%}%></p>
+                  <div class="rating-wrap">
+                    <p>YOU SAVE : &#x20b9;<%=product.customerSaving%></p>
+                    <p><i><b><%=Math.trunc(product.discountPercent)%>% Off</b></i></p>
+                  </div> <!-- rating-wrap.// -->
+              </figcaption>
+              <div class="bottom-wrap">
+                <a href="/products/<%=product.id%>" class="btn btn-sm btn-primary float-right">Show more</a> 
+                <div class="price-wrap h5">
+                  <span class="price-new text-danger">&#x20b9;<%=product.price%></span> <del class="price-old">&#x20b9; <%=product.mrp%></del>
+                </div> <!-- price-wrap.// -->
+              </div> <!-- bottom-wrap.// -->
+            </figure>
+          </div> <!-- col // -->
+          
+          <%}%> <!-- for -->
+      
+
+    </div>
+</div>            
+            
+<%}%><!--  else -->
+
+
+
+
+<% include ../partials/footer.ejs%>

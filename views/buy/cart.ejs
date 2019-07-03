@@ -1,0 +1,90 @@
+<%include ../partials/header.ejs%>
+
+
+<div class="container mt-4">
+	
+	<%if(qty===0){%>
+
+			<div class="card-banner" style="height:250px; background-image: url('https://images.unsplash.com/photo-1520589884715-55ac7417f2ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+			  <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
+			    <div class="text-center">
+			    	<h5 class="card-title">Your cart is empty </h5>
+			    	<a href="/" class="btn btn-warning btn-sm">Click me to start shopping  </a>
+			    </div>
+			  </article>
+			</div> <!-- card.// -->
+
+	<%}else{%>	
+	
+		<div class="card text-center"> 
+		<%for(id in cart.items){%>
+		<%let product=cart.items[id].item%>
+		<article class="itemlist">
+			<div class="row align-items-center">
+				<aside class="col-sm-3">
+					<div class="img-wrap"><img src="<%=product.image[0].url%>" class="img-md img-thumbnail img-fluid"></div>
+				</aside> <!-- col.// -->
+				<div class="col-sm-6 mt-3">
+					<div class="text-wrap">
+						<h4 class="title"> <%=product.name%>  </h4>
+						<div class="row justify-content-center">
+								<div class="col-sm-7">
+									<dl class="dlist-inline">
+									 
+									  <dt><a href="/reduce-by-one/<%=id%>" class="btn btn-outline-warning">-</a> </dt>
+									  <dd> 
+									  <input type="text" style="width: 70px;" value="<%=cart.items[id].qty%>" class="p-1">
+									  </dd>
+									  <%if(cart.items[id].item.stock>cart.items[id].qty){%>
+									  <dt><a href="/add-to-cart/<%=id%>" class="btn btn-outline-success">+</a> </dt>
+									  <%}%>
+									</dl>  <!-- item-property .// -->
+								</div> <!-- col.// -->
+							</div>
+						
+						
+					</div> <!-- text-wrap.// -->
+				</div> <!-- col.// -->
+				<aside class="col-sm-3 mt-3">
+					<div class="border-left pl-3">
+						<div class="price-wrap"> 
+							<span class="h4 price">Item Price : &#x20b9;<%=cart.items[id].price%></span>
+						</div> <!-- info-price-detail // -->
+						<p class="text-success"><%=product.deliveryPrices%></p>
+						<a href="/remove/<%=id%>" class="btn btn-outline-danger btn-round mb-2"> × Remove</a>
+						
+
+					</div> <!-- action-wrap.// -->
+				</aside> <!-- col.// -->
+			</div> <!-- row.// -->
+		</article> <!-- itemlist.// -->
+		<% }%>
+		
+		</div> <!-- card.// -->
+	
+	
+
+
+	
+	         <div class="col-sm-12 col-lg-4 mt-4">
+	                 <div class="card" style="padding:10px;">
+
+	                     
+	                     <a href="/cart-order" class="btn btn-warning btn-lg btn-block" style="margin:auto;">Place My Order Now</a>
+	                     <h3>Order Summary</h3>
+	                     <h5>Total Items: <span style="color:grey;float:right;"><%=cart.totalQty%>  </span> </h5>
+	                     <h5>Total Price :  <span style="color:grey;float:right;">&#x20b9;<%=cart.totalPrice%></span></h5>
+	                     <hr class="featurette-divider">
+	                     <h4 style="color:red;">Order Total:<span style="float:right;">&#x20b9;<%=cart.totalPrice%></span></h4>
+	                     
+	                    
+	                 </div>
+	       </div>
+	    
+
+	<%}%>
+
+</div>
+
+
+<%include ../partials/footer.ejs%>

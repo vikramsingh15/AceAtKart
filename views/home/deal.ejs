@@ -1,0 +1,34 @@
+<% include ../partials/header.ejs%>
+
+<div class="container mt-5">
+	<div class="row">
+
+		<%for(deal of deals){%>
+				<div class="col-md-3">
+					<figure class="card card-product">
+						<div class="img-wrap"> 
+							<span class="badge-new"> <%=Math.trunc(deal.discountPercent)%>% off </span>
+							<img src="<%=deal.image[0].url%>">
+							<a class="btn-overlay" href="/products/<%=deal.id%>"><i class="fa fa-search-plus"></i> Quick view</a>
+						</div>
+						<figcaption class="info-wrap">
+							<a href="/products/<%=deal.id%>" class="title"><%=deal.name%></a>
+							<div class="action-wrap">
+								<a href="/products/<%=deal.id%>" class="btn btn-primary btn-sm float-right"> Show more </a>
+								<div class="price-wrap h5">
+									<span class="price-new"> &#x20b9;<%=deal.price%></span>
+									<del class="price-old"> &#x20b9;<%=deal.mrp%></del>
+								</div> <!-- price-wrap.// -->
+							</div> <!-- action-wrap -->
+						</figcaption>
+					</figure> <!-- card // -->
+				</div> <!-- col // -->
+		<%}%>
+	
+
+	</div> <!-- row.// -->
+</div>
+
+
+
+<% include ../partials/footer.ejs%>

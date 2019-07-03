@@ -1,0 +1,201 @@
+<% include ../partials/header.ejs%>
+
+<style>
+  @media screen and (max-width: 720px) {
+
+  .gallery-wrap .img-big-wrap img{
+    height: 320px;
+  }
+
+</style>
+<section class="section-content bg padding-y-sm">
+<div class="container">
+
+
+<div class="row">
+<div class="col-xl-10 col-md-9 col-sm-12">
+
+
+<main class="card">
+  <div class="row no-gutters">
+<aside class="col-sm-6 border-right">
+    <article class="gallery-wrap"> 
+    <div class="img-big-wrap">
+      <div> 
+        <a href="<%=data.image[0].url%>" data-fancybox="" class="enlarge">
+          <img src="<%=data.image[0].url%>" class="img-fluid display">
+        </a>
+      </div>
+      </div> <!-- slider-product.// -->
+    <div class="img-small-wrap">
+      <div class="item-gallery"> 
+        <img src="<%=data.image[0].url%>" class="img-fluid" onClick="getAttr(this)">
+      </div>
+      <div class="item-gallery"> 
+        <img src="<%=data.image[1].url%>" class="img-fluid" onClick="getAttr(this)">
+      </div>
+     
+    </div> <!-- slider-nav.// -->
+    </article> <!-- gallery-wrap .end// -->
+    </aside>
+    <aside class="col-sm-6">
+
+
+<article class="card-body">
+<!-- short-info-wrap -->
+  <h3 class="title mb-3 "><%=data.name%></h3>
+
+<div class="mb-3"> 
+  <var class="price h3 text-warning"> 
+    <span class="currency">
+      Your Price: &#x20b9;</span><span class="num"><%=data.price%>
+        
+    </span>
+    <br>
+    <span class="currency ">
+      M.R.P:
+      <strike>&#x20b9;</span><span class="num"><%=data.mrp%></strike>  
+    </span>
+  </var> 
+  <h5 class="mt-4">Delivery Price :  <span style="color:grey;"><%=data.deliveryPrice%></span></h5>
+</div> <!-- price-detail-wrap .// -->
+
+<dl>
+  <dt>Description</dt>
+  <dd class="lead"><p><%-data.description%></p></dd>
+</dl>
+<dl class="row justify-content-center">
+  <dt class="col-sm-5">Delivery Price#</dt>
+  <dd class="col-sm-7"><%=data.deliveryPrice%></dd>
+
+  <dt class="col-sm-5">Availbility</dt>
+  <dd class="col-sm-7">
+    <%if(data.stock>0){%>
+    <%=data.stock%> items available 
+    <%}else{%>
+        <p class="badge-danger">Product is out of stock</p>
+    <%}%>
+  </dd>
+
+  <dt class="col-sm-5">Delivery</dt>
+  <dd class="col-sm-7">Gurgaon Only</dd>
+</dl>
+
+<hr>
+
+   <%if(data.stock>0){%>
+  <a href="/buy/<%=data.id%>" class="btn btn-info px-4 text-dark"> Buy Now </a>
+  <%if(currentUser.cart.items[data.id]&&(currentUser.cart.items[data.id].qty<data.stock)){%>
+  <a href="/add-to-cart/<%=data.id%>" class="btn  btn-outline-primary"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+  <%}else if(!currentUser.cart.items[data.id]){%>
+  <a href="/add-to-cart/<%=data.id%>" class="btn  btn-outline-primary"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+  
+  <%} %>
+  <%}%>
+
+<!-- short-info-wrap .// -->
+</article> <!-- card-body.// -->
+    </aside> <!-- col.// -->
+  </div> <!-- row.// -->
+</main> <!-- card.// -->
+
+<!-- PRODUCT DETAIL -->
+
+
+<article class="mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="row justify-content-between">
+        <div class="col-md-5">
+          <div class="card-title">Technical Deatails</div>
+          <%-data.technicalDetails%>
+        </div>
+        <div class="col-md-5">
+          <div class="card-title">Technical Information</div>
+          <%-data.additionalInfo %>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- PRODUCT DETAIL .// -->
+
+</div> <!-- col // -->
+
+<%if(!noMatch){%>
+
+<%}else{%>
+    <aside class="col-xl-2 col-md-3 col-sm-12">
+
+      <div class="card mt-3 text-center">
+        <div class="card-header">
+            You may also like
+        </div>
+      <%let i=0;%>
+      <%for(other of otherProduct){%>
+
+              <%i++%>       
+              <%if(i>4){%>
+                  <% break ;%>
+              <%}%>
+
+              <div class="card-body row">
+              <div class="col-md-12 col-sm-3">
+                <figure class="item border-bottom mb-3">
+                    <a href="/products/<%=other.id%>" class="img-wrap"> 
+                      <img src="<%=other.image[0].url%>" class="img-fluid img-md">
+                    </a>
+                    <figcaption class="info-wrap">
+                      <a href="/products/<%=other.id%>" class="title"><%=other.name%></a>
+                      <div class="price-wrap mb-3">
+                        <span class="price-new">&#x20b9; <%=other.price%></span> 
+                        <del class="price-old">&#x20b9; <%=other.mrp%></del>
+                      </div> <!-- price-wrap.// -->
+                    </figcaption>
+                </figure> <!-- card-product // -->
+              </div> <!-- col.// -->
+              </div> <!-- card-body.// -->
+
+
+     <%}%>
+
+      </div> <!-- card.// -->
+    </aside> <!-- col // -->
+<%}%>
+
+</div> <!-- row.// -->
+
+
+
+</div><!-- container // -->
+</section>
+
+<div class="container">
+  <%if(currentUser && currentUser.isAdmin){%>
+    <a href="/products/<%=data.id%>/edit" class="btn btn-outline-warning" >
+        Edit Product info
+    </a>
+    <form action="/products/<%data.id%>?_method=DELETE" method="POST" class="d-sm-inline">
+      <button class="btn btn-outline-danger">Delete product</button>
+    </form>
+  <%}%>
+</div>
+
+
+<script>
+  function getAttr(img){
+    let display=document.querySelector(".display");
+    let enlarge=document.querySelector(".enlarge")
+
+    let src=img.getAttribute("src");
+    display.setAttribute("src",src);
+    enlarge.setAttribute("href",src);
+  }
+</script>
+
+
+ <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c8a7112f4b8d85f"></script>
+
+<% include ../partials/footer.ejs%>

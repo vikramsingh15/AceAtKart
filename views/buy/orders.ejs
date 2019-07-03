@@ -1,0 +1,67 @@
+<%include ../partials/header.ejs%>
+
+<div class="container mt-3">
+<%  data.forEach(data=>{%>
+<div class="card box p-2 mt-3">
+
+<div class="row">
+<div class="col-md-4">
+    <% for(id in data.cart){%>
+   <figure class="itemside mb-2 ">
+       <div class="aside"><div class="img-wrap img-sm img-fluid img-thumbnail border-right"><img src="<%=data.cart[id].item.image[0].url%>"></div></div>
+       <figcaption class="p-2 ">
+           <h6 class="title"><%=data.cart[id].item.name%></h6>
+           <a href="/products/<%=data.cart[id].item._id%>">More details</a>
+           <p>qty : <%=data.cart[id].qty%></p>
+       </figcaption>
+   </figure>
+   <%}%>
+    
+
+</div>
+     
+   <div class="col-md-4 d-flex justify-content-center">
+    <article>
+        <h5><%=data.created.toDateString()%></h5>
+      
+        <dl class="dlist-align">
+          <dt>Name</dt>
+          <dd><%=data.name%></dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="dlist-align">
+          <dt>Address</dt>
+          <dd><%=data.address%></dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="dlist-align">
+          <dt>City</dt>
+          <dd><%=data.city%></dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="dlist-align">
+          <dt>Delivery</dt>
+          <dd class="text-primary">With In 2 days approx</dd>
+        </dl>  <!-- item-property-hor .// --><dl class="dlist-align">
+        <dt>Payment</dt>
+          <dd class="text-primary">Cash on delivery</dd>
+        </dl>  <!-- item-property-hor .// --> 
+    </article> <!-- col.// -->
+   </div>
+   
+   <div class="col-md-4 d-flex justify-content-center align-items-center mt-3">
+       <div class="col-md-12 col-lg-4">
+           <form action="/console/<%=data._id%>?_method=DELETE" method="POST">
+               <button class="btn btn-danger" >Delivery done(!careful)</button>
+           </form>
+           
+       </div>
+   </div>
+</div>
+    
+
+
+</div> <!-- card.// -->
+<% })%>
+    
+</div>
+
+   
+<%include ../partials/footer.ejs%>
