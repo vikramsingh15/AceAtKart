@@ -83,16 +83,7 @@
 
 <hr>
 
-   <%if(data.stock>0){%>
-  <a href="/buy/<%=data.id%>" class="btn btn-info px-4 text-dark"> Buy Now </a>
-  <%if(currentUser&&(currentUser.cart.items[data.id]&&(currentUser.cart.items[data.id].qty<data.stock))) {%>
   <a href="/add-to-cart/<%=data.id%>" class="btn  btn-outline-primary"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
-  <%}else if(currentUser&&!currentUser.cart.items[data.id]){%>
-  <a href="/add-to-cart/<%=data.id%>" class="btn  btn-outline-primary"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
-  
-  <%} %>
-  <%}%>
-
 <!-- short-info-wrap .// -->
 </article> <!-- card-body.// -->
     </aside> <!-- col.// -->
