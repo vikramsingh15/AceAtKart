@@ -23,7 +23,7 @@ router.get("/add-to-cart/:p_id",middleware.isLoggedIn,(req,res)=>{
 		if(err){
 			req.flash("error",err.message);
 			return res.redirect("back");
-		}else if(req.user.cart.items[p_id]){
+		}else if(req.user.cart&&req.user.cart.items&&req.user.cart.items[p_id]){
     if(req.user.cart.items[p_id].qty>=req.user.cart.items[p_id].item.stock){
       req.flash("error",product.name+" could not be added to the cart exceeded maximum stock avalable !!!!!!!!");
       return res.redirect("back");
