@@ -45,15 +45,15 @@ router.get("/orderPlaced/:productId/:qty",middleware.isLoggedIn,  (req,res)=>{
                           {
                             service:"Gmail",
                             auth: {
-                              user: 'Doodadofficial@gmail.com',
-                              pass: process.env.GMAILPW
+                              user: 'vikram.devops15@gmail.com',
+                              pass: process.env.pw
                             }
                           }
 
                       );
                     let mailOptions={
                       to: req.user.email,
-                      from: 'Doodadofficial@gmail.com',
+                      from: "vikram.devops15@gmail.com",
                       subject: 'Your Order '+product.name +" has been confirmed on AceAtKart",
                       text: 'Thank you for shopping with us. \n\n'+ 
                       "Your estimated delivery is with in 2 days of order placement\n\n"+

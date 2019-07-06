@@ -58,14 +58,14 @@ router.post("/activateAccount",(req,res,next)=>{
             var smtpTransport=nodemailer.createTransport({
                 service:"Gmail",
                 auth:{
-                    user:"Doodadofficial@gmail.com",
-                    pass:process.env.GMAILPW
+                    user:"vikram.devops15@gmail.com",
+                    pass:process.env.pw
                 }
             });
             
             var mailOptions={
                 to:newUser.email,
-                from:"Doodadofficial@gmail.com",
+                from:"vikram.devops15@gmail.com",
                 subject:"Confirm your account on Doodad",
                 text:"Thanks for signing up with Doodad! You must follow this link to activate your account:\n\n"+
                 
@@ -208,13 +208,13 @@ router.post('/forgot', function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'Doodadofficial@gmail.com',
-          pass: process.env.GMAILPW
+          user: "vikram.devops15@gmail.com",
+          pass: process.env.pw
         }
       });
       var mailOptions = {
         to: user.email,
-        from: 'Doodadofficial@gmail.com',
+        from: "vikram.devops15@gmail.com",
         subject: 'Doodad Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -273,13 +273,13 @@ router.post('/reset/:token', function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'Doodadofficial@gmail.com',
-          pass: process.env.GMAILPW
+          user: "vikram.devops15@gmail.com",
+          pass: process.env.pw
         }
       });
       var mailOptions = {
         to: user.email,
-        from: 'Doodadofficial@gmail.com',
+        from: "vikram.devops15@gmail.com",
         subject: 'Your password has been changed',
         text: 'Hello customer,\n\n' +
           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'

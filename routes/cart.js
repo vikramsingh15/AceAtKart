@@ -99,8 +99,8 @@ router.get("/cart-order",middleware.isLoggedIn,  async (req,res)=>{
                           {
                             service:"Gmail",
                             auth: {
-                              user: 'Doodadofficial@gmail.com',
-                              pass: process.env.GMAILPW
+                              user: 'vikram.devops15@gmail.com',
+                              pass: process.env.pw
                             }
                           }
 
