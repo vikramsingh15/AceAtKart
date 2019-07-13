@@ -30,12 +30,11 @@ router.get("/buy/:id",middleware.isLoggedIn,(req,res)=>{
 
 
 router.get("/orderPlaced/:productId/:qty",middleware.isLoggedIn,  (req,res)=>{
-
-                Product.findById(req.params.productId,function(err,product){
+                let productId=req.params.productId;
+                Product.findById(productId,function(err,product){
                     let price=req.params.qty*product.price;
-                    let productId=req.params.productId;
                     let order=new Order({userId:req.user.id,
-                        cart:{productId:{item:product,price:price,qty:req.params.qty}},
+                        cart:{[productId]:{item:product,price:price,qty:req.params.qty}},
                         address:req.user.address,
                         city:req.user.city,
                         name:req.user.name});
@@ -58,7 +57,7 @@ router.get("/orderPlaced/:productId/:qty",middleware.isLoggedIn,  (req,res)=>{
                       text: 'Thank you for shopping with us. \n\n'+ 
                       "Your estimated delivery is with in 2 days of order placement\n\n"+
                       "If you would like to view the status of your order or make any changes to it,\n\n"+
-                      "please visit Your Orders on"+'http://' + req.headers.host 
+                      "please visit Your Orders on"+' http://' + req.headers.host 
                       
                     }
                       smtpTransport.sendMail(mailOptions, function(err) {
@@ -203,9 +202,7 @@ router.get("/deliveredOrder",middleware.isLoggedIn,(req,res)=>{
 
 
 
-router.delete("/cancelOrder/:id",middleware.isLoggedIn,middleware.orderOwnership,(req,res)=>{
-   
-    
+router.delete("/cancelOrder/:id",middleware.isLoggedIn,middleware.orderOwnership,(req,res)=>{ 
     User.findById(req.user.id,(err,user)=>{
         if(err){
             req.flash('error', err.message);
@@ -229,6 +226,7 @@ router.delete("/cancelOrder/:id",middleware.isLoggedIn,middleware.orderOwnership
             for(pId in order.cart){
               arr.push(pId);
             } 
+
            Product.find({'_id':{$in:arr}},(err,data)=>{
             if(err){
                 req.flash('error', err.message);
@@ -236,7 +234,7 @@ router.delete("/cancelOrder/:id",middleware.isLoggedIn,middleware.orderOwnership
             }
             
             data.forEach(product=>{
-              product.stock+=order.cart[product._id].qty;
+              product.stock+=Number(order.cart[product._id].qty);
               product.save();
             })
                

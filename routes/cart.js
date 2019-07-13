@@ -34,7 +34,7 @@ router.get("/add-to-cart/:p_id",middleware.isLoggedIn,(req,res)=>{
 		req.user.cart=cart;
 		req.user.save();
 		req.flash("success",product.name+" added to the cart !!!!!!!!");
-		res.redirect("back");
+		return res.redirect("back");
 
 
 	});
@@ -112,7 +112,7 @@ router.get("/cart-order",middleware.isLoggedIn,  async (req,res)=>{
                       text: 'Thank you for shopping with us. \n\n'+ 
                       "Your estimated delivery is with in 2 days of order placement\n\n"+
                       "If you would like to view the status of your order or make any changes to it,\n\n"+
-                      "please visit Your Orders on"+'http://' + req.headers.host 
+                      "please visit Your Orders on"+' http://' + req.headers.host 
                       
                     }
                       smtpTransport.sendMail(mailOptions, function(err) {

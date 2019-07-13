@@ -93,7 +93,7 @@
                         <p style="color:red;">Dear customer you have set the quntity of product more than available stock of product :(</p>
                    <%}else{%>
                      
-                     <a href="/orderPlaced/<%=product.id%>/<%=qty%>" class="btn btn-warning btn-lg btn-block" style="margin:auto;">Place My Order Now</a>
+                     <a href="/orderPlaced/<%=product._id%>/<%=qty%>" class="btn btn-warning btn-lg btn-block" style="margin:auto;">Place My Order Now</a>
                      <h3>Order Summary</h3>
                      <h5>Items: <span style="color:grey;float:right;">&#x20b9; <%=product.price%></span> </h5>
                      <h5>Delivery Price :  <span style="color:grey;float:right;"><%=product.deliveryPrice%></span></h5>

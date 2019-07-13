@@ -50,15 +50,3 @@ this.orderPlaced=function(){
 }
 
 
-
-
-/*
-if(!oldCart){
-	this.items={};
-	this.totalPrice=0;
-	this.totalQty=0;
-}else{
-	this.items=oldCart.items;
-	this.totalPrice=oldCart.totalPric;
-	this.totalQty=oldCart.totalQt;
-}*/

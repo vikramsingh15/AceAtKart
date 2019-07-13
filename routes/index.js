@@ -66,16 +66,16 @@ router.post("/activateAccount",(req,res,next)=>{
             var mailOptions={
                 to:newUser.email,
                 from:"vikram.devops15@gmail.com",
-                subject:"Confirm your account on Doodad",
-                text:"Thanks for signing up with Doodad! You must follow this link to activate your account:\n\n"+
+                subject:"Confirm your account on AceAtKart",
+                text:"Thanks for signing up with AceAtKart! You must follow this link to activate your account:\n\n"+
                 
                 'https://' + req.headers.host + '/activateAccount/' + token +"/"+user.id+ '\n\n' +
                 "Have fun, and don't hesitate to contact us with your feedback.\n\n"+
-                "https://doodad.in"
+                "https://AceAtKart.com"
             };
             
             smtpTransport.sendMail(mailOptions,function(err) {
-                 req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions to activate your Doodad account.');
+                 req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions to activate your AceAtKart account.');
                  done(err, 'done');
             });
            
@@ -215,7 +215,7 @@ router.post('/forgot', function(req, res, next) {
       var mailOptions = {
         to: user.email,
         from: "vikram.devops15@gmail.com",
-        subject: 'Doodad Password Reset',
+        subject: 'AceAtKart Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +

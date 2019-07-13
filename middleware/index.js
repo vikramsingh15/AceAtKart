@@ -28,7 +28,7 @@ middleware.orderOwnership = function(req,res,next){
             if(err){
                 res.redirect("back");
             }else{
-                if(req.user._id.equals(order.customer) || (req.user && req.user.isAdmin)){
+                if(req.user._id.equals(order.userId) || (req.user && req.user.isAdmin)){
                     next();
                 }else{
                     res.redirect("back");

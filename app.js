@@ -75,9 +75,9 @@ app.use(function(req,res,next){
    res.locals.description="AceAtKart is an Indian e-commerce website, vending gadget supplies. It strives to provide gadget supplies like headphones, customised USB cables and many more. Supplies are affordable and of good quality. Also, Imparting you hassle free delivery to your doorstep.";
    res.locals.image=null;
    if(req.user&&req.user.cart){
-        res.locals.qty=req.user.cart.totalQty||0;
+        res.locals.cartQty=req.user.cart.totalQty||0;
     }else{
-        res.locals.qty=0;
+        res.locals.cartQty=0;
     }
 
    next();
